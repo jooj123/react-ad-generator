@@ -1,8 +1,8 @@
 {
   "private": false,
-  "name": "react-redux-starter-kit",
+  "name": "react-ad-generator",
   "version": "0.0.1",
-  "description": "React Redux Starter Kit",
+  "description": "React Ad Generator",
   "main": "index.js",
   "engines": {
     "node": ">=4.2.0",
@@ -20,11 +20,7 @@
     "stylelint": "stylelint ./src/components/**/*.css ./src/css/*.css",
     "lint": "npm run stylelint && npm run eslint",
     "test:unit": "mocha ./tests/unit_tests/* --compilers js:babel-register,css:./tests/unit_tests/css-null-compiler --require ./tests/unit_tests/setup.js",
-    "test": "npm run lint && npm run test:unit"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jooj123/react-redux-starter-kit.git"
+    "test": "npm run test:unit"
   },
   "keywords": [
     "react",
@@ -40,10 +36,6 @@
   ],
   "author": "Martin Jujou",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/jooj123/react-redux-starter-kit/issues"
-  },
-  "homepage": "https://github.com/jooj123/react-redux-starter-kit#readme",
   "devDependencies": {
     "babel-core": "^6.7.4",
     "babel-eslint": "^6.0.0",
@@ -56,6 +48,7 @@
     "chai": "^3.5.0",
     "chai-enzyme": "^0.4.2",
     "cheerio": "^0.20.0",
+    "copy-webpack-plugin": "^3.0.1",
     "css-loader": "^0.23.1",
     "enzyme": "^2.2.0",
     "eslint": "^2.4.0",
@@ -74,20 +67,20 @@
     "redbox-react": "^1.2.3",
     "stylelint": "^5.2.1",
     "stylelint-config-standard": "^4.0.1",
+    "url-loader": "^0.5.7",
     "webpack": "^1.12.14",
     "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {
     "isomorphic-fetch": "^2.2.1",
     "normalize.css": "^4.0.0",
-    "react": "^0.14.7",
+    "react": "^0.14.8",
+    "react-copy-to-clipboard": "^4.2.1",
     "react-dom": "^0.14.7",
     "react-helmet": "^3.0.0",
-    "react-redux": "^4.4.1",
     "react-router": "^2.0.1",
-    "redux": "^3.3.1",
-    "redux-logger": "^2.6.1",
-    "redux-thunk": "^2.0.1",
-    "style-loader": "^0.13.1"
+    "react-select": "^1.0.0-beta14",
+    "style-loader": "^0.13.1",
+    "whatwg-fetch": "^1.0.0"
   }
 }

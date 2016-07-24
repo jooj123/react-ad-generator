@@ -1,0 +1,78 @@
+@import '../../css/variables.css';
+
+.root {
+  box-sizing: border-box;
+  padding: 10px 15px;
+
+  h1 {
+    font-size: 1.8em;
+  }
+
+  fieldset {
+    border: none;
+    padding-left: 0;
+    padding-right: 0;
+
+    legend {
+      color: var(--light-grey-color);
+      text-transform: uppercase;
+      font-size: 0.7em;
+      border-bottom: 1px solid var(--light-grey-border-color);
+      display: inline-block;
+      width: 95%;
+    }
+
+    > div {
+      margin-top: 15px;
+    }
+
+    label {
+      text-transform: uppercase;
+      font-size: 0.7em;
+      color: var(--header-color);
+    }
+
+    @media (--medium-screen-and-lower) {
+      label {
+        display: block;
+      }
+    }
+  }
+
+  > div {
+    margin-top: 20px;
+  }
+}
+
+.field {
+  border-radius: 5px;
+  border: 1px solid var(--light-grey-input-border-color);
+  height: 35px;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 6px;
+}
+
+.button {
+  width: 200px;
+  height: 42px;
+  background-color: var(--upload-button-color);
+  color: white;
+  font-size: 1.0em;
+  padding: 7px;
+  box-sizing: border-box;
+  border-radius: 4px;
+  text-align: center;
+  display: inline-block;
+  border: none;
+  margin-right: 34px;
+  margin-left: 3px;
+}
+
+.submit {
+  background-color: var(--submit-button-color);
+  composes: button;
+  margin-right: 0;
+  margin-left: 0;
+}

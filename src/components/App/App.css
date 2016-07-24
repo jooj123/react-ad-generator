@@ -2,14 +2,15 @@
 @import '../../css/variables.css';
 
 .root {
-  width: 800px;
-  margin: 0 auto;
 
-  @media (--medium-screen-and-lower) {
-    width: 100%;
-  }
 }
 
-.container {
-  padding: 15px;
+/* system wide styles */
+body {
+  color: var(--text-color);
+  font-family: var(--font-family);
+}
+
+:--heading {
+  color: var(--header-color);
 }

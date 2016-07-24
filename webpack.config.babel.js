@@ -1,4 +1,5 @@
 import webpack from 'webpack';
+import CopyWebpackPlugin from 'copy-webpack-plugin';
 
 const AUTOPREFIXER_BROWSERS = [
   'Android 2.3',
@@ -8,7 +9,7 @@ const AUTOPREFIXER_BROWSERS = [
   'Explorer >= 9',
   'iOS >= 7',
   'Opera >= 12',
-  'Safari >= 7.1',
+  'Safari >= 7.1'
 ];
 
 const DEBUG = process.env.NODE_ENV !== 'production';
@@ -16,7 +17,7 @@ const WATCH = process.env.WATCH; // used for conditionally loading HMR
 const VERBOSE = false;
 const GLOBALS = {
   'process.env.NODE_ENV': DEBUG ? '"development"' : '"production"',
-  __DEV__: DEBUG,
+  __DEV__: DEBUG
 };
 
 /* eslint-disable no-console */
@@ -26,18 +27,18 @@ module.exports = {
   context: `${__dirname}/src`,
   entry: {
     javascript: './index.js',
-    html: './index.html',
+    html: './index.html'
   },
   output: {
     path: `${__dirname}/build`,
-    filename: 'bundle.js',
+    filename: 'bundle.js'
   },
   // Choose a developer tool to enhance debugging
   // http://webpack.github.io/docs/configuration.html#devtool
   devtool: DEBUG ? 'cheap-module-eval-source-map' : false,
   devServer: {
     port: 8080,
-    historyApiFallback: true,
+    historyApiFallback: true
   },
 
   cache: DEBUG,
@@ -52,20 +53,24 @@ module.exports = {
     chunks: VERBOSE,
     chunkModules: VERBOSE,
     cached: VERBOSE,
-    cachedAssets: VERBOSE,
+    cachedAssets: VERBOSE
   },
 
   plugins: [
+    new CopyWebpackPlugin([
+      { from: 'static' },
+      { from: '../node_modules/react-select/dist/react-select.css' }
+    ]),
     new webpack.DefinePlugin(GLOBALS),
     ...(!DEBUG ? [
       new webpack.optimize.DedupePlugin(),
       new webpack.optimize.UglifyJsPlugin({
         compress: {
-          warnings: VERBOSE,
-        },
+          warnings: VERBOSE
+        }
       }),
-      new webpack.optimize.AggressiveMergingPlugin(),
-    ] : []),
+      new webpack.optimize.AggressiveMergingPlugin()
+    ] : [])
   ],
   module: {
     loaders: [
@@ -83,20 +88,24 @@ module.exports = {
                 {
                   transform: 'react-transform-hmr',
                   imports: ['react'],
-                  locals: ['module'],
+                  locals: ['module']
                 }, {
                   transform: 'react-transform-catch-errors',
-                  imports: ['react', 'redbox-react'],
-                },
-              ],
-            },
-            ],
-          ] : [],
-        },
+                  imports: ['react', 'redbox-react']
+                }
+              ]
+            }
+            ]
+          ] : []
+        }
       },
       {
         test: /\.html$/,
-        loader: 'file?name=[name].[ext]',
+        loader: 'file?name=[name].[ext]'
+      },
+      {
+        test: /\.(png|jpg|jpeg|gif|svg|woff|woff2)$/,
+        loader: 'url-loader?limit=10000'
       },
       {
         test: /\.css$/,
@@ -108,21 +117,21 @@ module.exports = {
             modules: true,
             localIdentName: DEBUG ? '[name]_[local]_[hash:base64:3]' : '[hash:base64:4]',
             minimize: !DEBUG,
-            discardComments: { removeAll: true },
+            discardComments: { removeAll: true }
           })}`,
-          'postcss-loader',
-        ],
-      },
-    ],
+          'postcss-loader'
+        ]
+      }
+    ]
   },
   postcss: function plugins() {
     return [
       require('postcss-import')({
-        onImport: files => files.forEach(this.addDependency),
+        onImport: files => files.forEach(this.addDependency)
       }),
       require('postcss-nested')(),
-      require('postcss-cssnext')({ autoprefixer: AUTOPREFIXER_BROWSERS }),
+      require('postcss-cssnext')({ autoprefixer: AUTOPREFIXER_BROWSERS })
     ];
-  },
+  }
 };
 

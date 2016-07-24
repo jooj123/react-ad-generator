@@ -7,6 +7,8 @@
   "rules": {
     "react/jsx-quotes": 0,
     "jsx-quotes": [2, "prefer-double"],
-    "react/prefer-stateless-function": 0
+    "react/prefer-stateless-function": 0,
+    "comma-dangle": [2, "never"],
+    "react/sort-comp": 0
   }
 }

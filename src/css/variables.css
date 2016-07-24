@@ -1,14 +1,20 @@
 :root {
   /* colors */
-  --nav-background-color: #f5f5f5;
-  --nav-text-color: #000;
-  --active-color: #4caf50;
+  --text-color: #000;
+  --header-color: #374f61;
+  --light-grey-color: #a4b4b5;
+  --light-grey-border-color: #e2e6e8;
+  --light-grey-background-color: #e7e9ec;
+  --light-grey-input-border-color: #cecfce;
+  --profile-shadow-color: #c0c0c0;
+  --upload-button-color: #738e9c;
+  --submit-button-color: #2aaadd;
 
   /* Typography */
   --font-family: Arial, Helvetica, sans-serif;
 
   /* Sizes */
-  --main-container-size: 800px;
+  --main-container-size: 1000px;
 
   /* Media query screen sizes and useful queries */
   --screen-xs-min: 480px;  /* Extra Small Devices, Phones */
@@ -22,6 +28,7 @@
   @custom-media --large-screen (width >= 1200px);
   @custom-media --small-screen-and-lower (width < 992px);
   @custom-media --medium-screen-and-lower (width < 1200px);
+  @custom-media --medium-screen-and-higher (width >= 992px);
 
   /* Custom Selectors */
   @custom-selector :--heading h1, h2, h3, h4, h5, h6;
